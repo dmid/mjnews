@@ -1,15 +1,20 @@
 Mjnews::Application.routes.draw do
-  get "static_pages/home"
-  get "static_pages/about"
-  get "users/new"
 
   resources :users
- # match '/signup' to: 'users#new'
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  resources :sessions, only: [:new, :create, :destroy]
+
+  match '/signup', to: 'users#new', via: 'get'
+  match '/signin', to: 'sessions#new', via: 'get'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
+ 
+
 
   # You can have the root of your site routed with "root"
   root 'static_pages#home' #eventually will be stories#index
+
+  get "static_pages/home"
+  get "static_pages/about"
+  get "users/new"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
