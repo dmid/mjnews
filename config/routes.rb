@@ -1,20 +1,20 @@
 Mjnews::Application.routes.draw do
+   root 'static_pages#home' #eventually will be stories#index
 
+  get "static_pages/home"
+  get "static_pages/about"
+  get "users/new"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/signup', to: 'users#new', via: 'get'
-  match '/signin', to: 'sessions#new', via: 'get'
+  match '/signin',  to: 'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
  
 
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#home' #eventually will be stories#index
-
-  get "static_pages/home"
-  get "static_pages/about"
-  get "users/new"
+ 
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
