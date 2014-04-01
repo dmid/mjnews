@@ -38,7 +38,7 @@ module SessionsHelper
   end
 
   def store_location
-    session[:return_to] = request.url if request.get
+    session[:return_to] = request.url if request.get?
   end
 
 end
