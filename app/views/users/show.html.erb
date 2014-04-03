@@ -1,10 +1,20 @@
 <% provide(:title, @user.name)%>
 
 <div class="row">
-  <aside class="span4">
+  <aside class="col-4">
     <section>
   <h1><%= @user.name %></h1>
       <%= @user.email %>
     </section>
   </aside>
+  <div class="span8">
+    <% if @user.stories.any? %>
+      <h3>Stories (<%= @user.stories.count %>)</h3>
+      <%= render @stories %>
+    
+
+      </ol>
+      <%= will_paginate @stories %>
+    <% end %>
+  </div>
 </div>

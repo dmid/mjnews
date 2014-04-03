@@ -1,11 +1,26 @@
 Mjnews::Application.routes.draw do
    root 'static_pages#home' #eventually will be stories#index
 
+  resources :stories do
+    member do 
+      get  :followers
+      post :vote
+    end
+  end
+  
+  resources :users do
+    member do 
+      get :following
+    end
+  end
+ 
+  get 'stories/index'
   get "static_pages/home"
   get "static_pages/about"
   get "users/new"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 
   match '/signup', to: 'users#new', via: 'get'
   match '/signin',  to: 'sessions#new', via: 'get'

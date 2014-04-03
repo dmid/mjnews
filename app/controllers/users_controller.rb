@@ -22,6 +22,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @stories = @user.stories.paginate(page: params[:page], per_page: 10)
   end
 
   def edit
@@ -44,6 +45,18 @@ def update
   end
 end
 
+def following
+  @title = "Saved Stories"
+  @user = User.find(params[:id])
+  @users = user.followed_stories.paginate(page: params[:page])
+end
+
+  def signed_in_user
+    unless signed_in?
+      store_location
+      redirect_to signin_url, notice: "Please Sign In." 
+    end
+  end
 
   private
 
@@ -52,12 +65,7 @@ end
   end
 
   #before actions
-  def signed_in_user
-    unless signed_in?
-      store_location
-      redirect_to signin_url, notice: "Please Sign In." 
-    end
-  end
+
 
   def correct_user
     @user = User.find(params[:id])

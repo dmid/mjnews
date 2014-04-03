@@ -8,12 +8,22 @@ namespace :db do
                  admin: true)
     99.times do |n|
       name  = Faker::Name.name
-      email = "example-#{n+1}@mail.org"
-      password  = "password"
+      email = Faker::Internet.email
+      password  = "foobar"
       User.create!(name: name,
                    email: email,
                    password: password,
                    password_confirmation: password)
     end
-  end
+  
+
+  users = User.all(limit: 6)
+    50.times do
+  title = Faker::Lorem.sentence
+  url = Faker::Internet.url
+  users.each {|user| user.stories.create!(title: title, url:url)}
+  end  
+end
+
+
 end

@@ -1,0 +1,16 @@
+
+
+        <div class="col-sm-1" class="follow_form">
+              <%= form_for(current_user.relationships.build(followed_id: story.id), remote: true) do |f| %>
+              <%= f.hidden_field :followed_id%>
+                   
+              <%= f.submit "^",class: "btn btn-primary btn-sm" %>
+        </div>
+              <% end %>
+  Points: <%= story.points %>14<span class="title"><%= story.title %></span>
+  <span class="url"><%= story.url %> </span>
+  <span class="timestamp">
+  Posted <%= time_ago_in_words(story.created_at)%> ago.
+  </span>
+</li>
+</ul>

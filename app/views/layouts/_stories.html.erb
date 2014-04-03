@@ -1,0 +1,7 @@
+<li>
+  Points: <%=story.points %><span class="title"><%= story.title %></span>
+  <span class="url"><%= story.url %> </span>
+  <span class="timestamp">
+  Posted <%= time_ago_in_words(story.created_at)%> ago.
+  </span>
+</li>

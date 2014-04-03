@@ -1,0 +1,24 @@
+
+
+<ul class="users">
+<li>
+ <% unless current_user?(@user) %>
+    <% if !current_user.following?(story.id) %>
+    <div class="col-sm-1">
+    <%=button_to '+1', vote_story_path(story), method: :post %> 
+      </div>
+      <%end%>
+          Points: <%= story.points %>14<span class="title"><%= story.title %></span>
+          <span class="url"><%= story.url %> </span>
+          <span class="timestamp"></span>
+           Posted <%= time_ago_in_words(story.created_at)%> ago.
+<%end%>
+
+  </li>
+</ul>
+
+
+
+
+
+
