@@ -2,7 +2,7 @@ class RelationshipsController < ApplicationController
   before_action :signed_in_user
 
   def create
-      @story = Story.find(params[:relationship][:followed_id])
+    @story = Story.find(params[:relationship][:followed_id])
      current_user.follow!(@story.id)
       respond_to do |format|
       format.html {redirect_to @story}

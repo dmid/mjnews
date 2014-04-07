@@ -1,5 +1,36 @@
-<h3>Stories</h3>
-<ol>
-  <%= render @stories %>
+
+<% @stories.each do |story| %>
+
+<ol class="users">
+<li>
+ <% unless current_user?(@user) %>
+    <% if !current_user.following?(story.id)  && current_user.id != story.user_id%>
+    <div class="col-sm-1">
+    <%=button_to '+1', vote_story_path(story), method: :post %> 
+      </div>
+      <%end%>
+          
+          <div class="col-sm-8">
+          <span class="title"><%= link_to story.title, story.url %></span>
+         
+          <span class="url">
+          </div>
+          <div class="col-sm-8">
+          <%= story.url %> </span>
+          <span class="timestamp">
+           
+           Posted <%= time_ago_in_words(story.created_at)%> ago.</span>
+
+           <span class="poster">
+           posted by: <%= story.user.name %>
+           </span>
+           </div>
+<%end%>
+
+  </li>
 </ol>
-  <%= will_paginate @stories %>
+
+
+
+  <%end%>
+    <%= will_paginate @stories %>

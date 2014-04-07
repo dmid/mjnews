@@ -20,6 +20,7 @@ gem 'sprockets'
 gem 'faker', '1.1.2'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'ancestry'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

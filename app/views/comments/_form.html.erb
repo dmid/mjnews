@@ -1,0 +1,11 @@
+<%=nested_comments @comments%>
+
+<%= form_for [@commentable, @comment] do |f| %>
+  <%=f.hidden_field :parent_id %>
+
+   <%=  f.label :content, "New comment" %>
+
+ <%= f.text_area :content, :rows => 4 %>
+  
+    <%=  f.submit "Post Comment" %>
+    <%end %>

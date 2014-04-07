@@ -1,10 +1,16 @@
+
+
+
 <%provide(:title, "Sign In") %>
 
-<legend>Sign In</legend>
 
+ <div class="col-sm-4">
+      </div>  
+ <div class="col-sm-4">
+ <legend>Sign In</legend>
  <%= form_for(:session, url: sessions_path) do |f| %>
 
- <div class="col-sm-5">
+
       <%= f.label :email %>
       <%= f.text_field :email %>
 

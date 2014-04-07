@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   has_many :stories
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
 
@@ -21,7 +22,7 @@ class User < ActiveRecord::Base
 
 
   def following?(story)
-    relationships.find_by(followed_id: story)
+    relationships.find_by(followed_id: story) 
   end
 
   def follow!(story)
@@ -39,6 +40,9 @@ class User < ActiveRecord::Base
   def User.hash(token)
     Digest::SHA1.hexdigest(token.to_s)
   end
+
+
+
 
   private
 

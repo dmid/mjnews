@@ -24,6 +24,7 @@ html {
 
 body {
   padding-top: 60px;
+
 }
 
 section {
@@ -70,10 +71,22 @@ p {
 
 
 /* header */
+.navbar {
+background-color: #dff0d8;
 
-#logo {
+li a{
+  color:black;
+  &:hover{
+    color:white;
+    background-color: #cad4c5;
+  }
+}
+}
+
+#logo  {
   float: left;
-  margin-right: 10px;
+  margin-right:10px;
+  padding-left:10%;
   font-size: 1.7em;
   color: black;
   text-transform: uppercase;
@@ -82,7 +95,7 @@ p {
   font-weight: bold;
   line-height: 1;
   &:hover {
-    color: #81ff57;
+    color: white;
     text-decoration: none;
   }
 }
@@ -223,3 +236,29 @@ input {
     display: block;
   }
 }
+
+/* PAGINATION */
+
+.pagination
+{
+  li a{
+    background-color:#dff0d8;
+    color:black;
+    border-color:#D8F0DD;
+    
+   & .active {
+      background-color: red;
+    }
+
+     &:hover {
+    background-color:black;
+    background-color:#D8F0DD;
+    color:white;
+    }}
+  }
+
+  .title a
+  {
+    color:black;
+    font-weight: bold;
+  }

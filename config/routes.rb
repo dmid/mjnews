@@ -5,6 +5,7 @@ Mjnews::Application.routes.draw do
     member do 
       get  :followers
       post :vote
+      resources :comments
     end
   end
   
@@ -21,11 +22,17 @@ Mjnews::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :stories, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
 
+  match '/stories', to: 'stories#index', via: 'get'
   match '/signup', to: 'users#new', via: 'get'
   match '/signin',  to: 'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
- 
+  
+  match '/about', to: 'static_pages#about', via: 'get'
+  
+
 
 
   # You can have the root of your site routed with "root"

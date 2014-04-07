@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140402165206) do
+ActiveRecord::Schema.define(version: 20140405145305) do
+
+  create_table "comments", force: true do |t|
+    t.string   "content"
+    t.integer  "commentable_id"
+    t.string   "ancestry"
+    t.string   "commentable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["ancestry"], name: "index_comments_on_ancestry"
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
@@ -43,7 +54,14 @@ ActiveRecord::Schema.define(version: 20140402165206) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin",                       default: false
+    t.integer  "my_draft_comments_count",     default: 0
+    t.integer  "my_published_comments_count", default: 0
+    t.integer  "my_comments_count",           default: 0
+    t.integer  "draft_comcoms_count",         default: 0
+    t.integer  "published_comcoms_count",     default: 0
+    t.integer  "deleted_comcoms_count",       default: 0
+    t.integer  "spam_comcoms_count",          default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

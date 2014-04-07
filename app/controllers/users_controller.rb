@@ -51,12 +51,6 @@ def following
   @users = user.followed_stories.paginate(page: params[:page])
 end
 
-  def signed_in_user
-    unless signed_in?
-      store_location
-      redirect_to signin_url, notice: "Please Sign In." 
-    end
-  end
 
   private
 
@@ -65,7 +59,12 @@ end
   end
 
   #before actions
-
+  def signed_in_user
+    unless signed_in?
+      store_location #uh, send me back!
+      redirect_to signin_url, notice: "Please Sign In." 
+    end
+  end
 
   def correct_user
     @user = User.find(params[:id])
@@ -77,3 +76,5 @@ end
   end
 
 end
+
+#If I couldn't flow futuristic would ya?
