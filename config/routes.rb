@@ -1,5 +1,5 @@
 Mjnews::Application.routes.draw do
-   root 'static_pages#home' #eventually will be stories#index
+   root 'stories#index' #eventually will be stories#index
 
   resources :stories do
     member do 
