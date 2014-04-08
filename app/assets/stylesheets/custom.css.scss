@@ -72,41 +72,43 @@ p {
 
 /* header */
 .navbar {
-background-color: #dff0d8;
+
+background-color: black;
+padding-right:50px;
 
 li a{
-  color:black;
+
   &:hover{
-    color:white;
-    background-color: #cad4c5;
+    color:#8bca42;
+    background-color: black;
+    
   }
 }
 }
 
+
 #logo  {
   float: left;
-  margin-right:10px;
-  padding-left:10%;
   font-size: 1.7em;
-  color: black;
-  text-transform: uppercase;
+  color: #8bca42;
+  margin-left: 75px;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
   line-height: 1;
   &:hover {
-    color: white;
+    color: #428bca;
     text-decoration: none;
   }
 }
 
 
 
-/*CONTAiner */
+/*CONTAiner
 .container{
   background-color: #f6f6ef;
 }
-
+ */
 
 /* footer */
 
@@ -244,26 +246,102 @@ input {
 
 /* PAGINATION */
 
+li .active {background-color:red;}
+
 .pagination
 {
-  li a{
-    background-color:#dff0d8;
-    color:black;
+
+  li a {
+    background-color:white;
+    color:#8bca42;
     border-color:#D8F0DD;
-    
-   & .active {
-      background-color: red;
-    }
+
 
      &:hover {
     background-color:black;
-    background-color:#D8F0DD;
+   /* background-color:#D8F0DD;*/
     color:white;
-    }}
+    }
+
+  }
+  
+
   }
 
+
+/*STORIES DISPLAY STUFF */
+
+
+ .stories{
+      
+      padding:10px 0;
+    border-top:1px solid $grayLighter;
+    &:last-child{
+      border-bottom: 1px solid $grayLighter;
+    }
+}
   .title a
   {
     color:black;
     font-weight: bold;
   }
+
+
+
+
+
+
+
+
+
+
+
+/*DROPDOWN SHIT */
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
