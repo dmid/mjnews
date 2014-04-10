@@ -43,6 +43,9 @@ ActiveRecord::Schema.define(version: 20140405145305) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "story_id"
+    t.integer  "draft_comments_count",     default: 0
+    t.integer  "published_comments_count", default: 0
+    t.integer  "deleted_comments_count",   default: 0
   end
 
   add_index "stories", ["user_id", "created_at"], name: "index_stories_on_user_id_and_created_at"
@@ -62,6 +65,9 @@ ActiveRecord::Schema.define(version: 20140405145305) do
     t.integer  "published_comcoms_count",     default: 0
     t.integer  "deleted_comcoms_count",       default: 0
     t.integer  "spam_comcoms_count",          default: 0
+    t.integer  "draft_comments_count",        default: 0
+    t.integer  "published_comments_count",    default: 0
+    t.integer  "deleted_comments_count",      default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

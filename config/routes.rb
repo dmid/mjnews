@@ -1,20 +1,23 @@
 Mjnews::Application.routes.draw do
    root 'stories#index' #eventually will be stories#index
 
+  resources :comments do
+    resources :comments
+  end
   resources :stories do
-    member do 
+    member do
       get  :followers
       post :vote
       resources :comments
     end
   end
-  
+
   resources :users do
-    member do 
+    member do
       get :following
     end
   end
- 
+
   get 'stories/index'
   get "static_pages/home"
   get "static_pages/about"
@@ -23,7 +26,7 @@ Mjnews::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :stories, only: [:create, :destroy]
-  resources :comments, only: [:create, :destroy]
+
 
   match '/stories', to: 'stories#index', via: 'get'
   match '/signup', to: 'users#new', via: 'get'
@@ -31,12 +34,12 @@ Mjnews::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: 'delete'
   match 'post', to: 'stories#new' ,via: 'get'
   match '/about', to: 'static_pages#about', via: 'get'
-  
+
 
 
 
   # You can have the root of your site routed with "root"
- 
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

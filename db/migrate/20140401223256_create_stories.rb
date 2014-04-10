@@ -3,7 +3,7 @@ class CreateStories < ActiveRecord::Migration
     create_table :stories do |t|
       t.string :title
       t.string :url
-      t.integer :points
+      t.integer :points, default: 0
       t.integer :user_id
 
       t.timestamps

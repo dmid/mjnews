@@ -1,73 +1,21 @@
-<ol start="1">
-<% @stories.each do |story| %>
-
-
-<li class="stories">
-
-
-    <% if current_user != nil %>
-      <% if !current_user.following?(story.id)  && current_user.id != story.user_id%>
-          <%=button_to '+1', vote_story_path(story), method: :post %>
+<ol start="1" class="col-sm-10">
+  <% @stories.each do |story| %>
+    <li class="stories">
+    <div class="vote">
+      <% unless current_user == nil %>
+        <% unless current_user.following?(story.id)  || current_user.id == story.user_id%>
+            <%=button_to '+1', vote_story_path(story), class:"btn-primary",id:"vote_button", method: :post %>
         <%end%>
-
       <%end%>
+    </div>
 
-
-        <span class="title">
-        <%= link_to story.title, story.url %>s
-        </span>
-
-
-
-          <%= story.url %>
-
-
-           Posted <%= time_ago_in_words(story.created_at)%> ago.
-
-
-           posted by: <%= story.user.name %>
-
-
-
+    <span class="title"> <%= link_to story.title, story.url %> </span><br />
+    <span class="points">Points:<%= story.points %> </span>
+    <span class= "stor_url"><%= story.url %></span>
+    <span class= "posted_at ">Posted <%= time_ago_in_words(story.created_at)%> ago.</span>
+    <span class="posted_by "> posted by: <%= story.user.name %></span>
 
   </li>
-
-
-
-
   <%end%>
 </ol>
-    <%= will_paginate @stories %>
-
-
-
-
- <h2>Multi level dropdown menu in Bootstrap 3</h2>
-        <hr>
-        <div class="dropdown">
-            <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#" href="/">
-                Dropdown <span class="caret"></span>
-            </a>
-        <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-              <li><a href="#">Some action</a></li>
-              <li><a href="#">Some other action</a></li>
-              <li class="divider"></li>
-              <li class="dropdown-submenu">
-                <a tabindex="-1" href="#">Hover me for more options</a>
-                <ul class="dropdown-menu">
-                  <li><a tabindex="-1" href="#">Second level</a></li>
-                  <li class="dropdown-submenu">
-                    <a href="#">Even More..</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">3rd level</a></li>
-                      <li><a href="#">3rd level</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Second level</a></li>
-                  <li><a href="#">Second level</a></li>
-                </ul>
-              </li>
-            </ul>
-        </div>
-  </div>
-</div>
+<%= will_paginate @stories %>

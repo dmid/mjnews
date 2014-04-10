@@ -284,64 +284,34 @@ li .active {background-color:red;}
   {
     color:black;
     font-weight: bold;
+    margin-left: 45px;
+    font-size:18px;
   }
 
-
-
-
-
-
-
-
-
-
-
-/*DROPDOWN SHIT */
-
-.dropdown-submenu {
-    position: relative;
+.points
+{
+  margin-left:46px;
 }
 
-.dropdown-submenu>.dropdown-menu {
-    top: 0;
-    left: 100%;
-    margin-top: -6px;
-    margin-left: -1px;
-    -webkit-border-radius: 0 6px 6px 6px;
-    -moz-border-radius: 0 6px 6px;
-    border-radius: 0 6px 6px 6px;
+
+
+
+
+
+
+
+
+/* Me Idea is to place a blank picture in a variable if the value is not there, or a vote +! in
+if'n it is there. That way the div is always there and the stories display 100% correctly. */
+
+.vote
+{
+  width: 20px;
+  position: absolute;
+  margin-top: -20px;
 }
 
-.dropdown-submenu:hover>.dropdown-menu {
-    display: block;
-}
+#vote_button{
+  width:40px;
 
-.dropdown-submenu>a:after {
-    display: block;
-    content: " ";
-    float: right;
-    width: 0;
-    height: 0;
-    border-color: transparent;
-    border-style: solid;
-    border-width: 5px 0 5px 5px;
-    border-left-color: #ccc;
-    margin-top: 5px;
-    margin-right: -10px;
-}
-
-.dropdown-submenu:hover>a:after {
-    border-left-color: #fff;
-}
-
-.dropdown-submenu.pull-left {
-    float: none;
-}
-
-.dropdown-submenu.pull-left>.dropdown-menu {
-    left: -100%;
-    margin-left: 10px;
-    -webkit-border-radius: 6px 0 6px 6px;
-    -moz-border-radius: 6px 0 6px 6px;
-    border-radius: 6px 0 6px 6px;
 }
