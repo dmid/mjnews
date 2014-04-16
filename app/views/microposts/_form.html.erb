@@ -1,0 +1,11 @@
+
+  <%= form_for(@micropost) do |f| %>
+
+    <%= f.text_area :content, placeholder: "Marijuana News. It's All In The Comments" %>
+    <%= f.hidden_field :story_id, value: @story.id %>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :comment_id, value: "TBD" %>
+    <%= f.hidden_field :parent_id %>
+
+  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>

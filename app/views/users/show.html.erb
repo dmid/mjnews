@@ -8,13 +8,15 @@
     </section>
   </aside>
   <div class="span8">
-    <% if @user.stories.any? %>
-      <h3>Stories (<%= @user.stories.count %>)</h3>
-      <%= render @stories %>
-    
+
+      <h4><%= link_to "Submissions #{@user.stories.count}", @user_stories_path %></h4>
+      <h4><%= link_to "Comments", @user_microposts_path %>
+
+
+
 
       </ol>
       <%= will_paginate @stories %>
-    <% end %>
+
   </div>
 </div>

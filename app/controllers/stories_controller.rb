@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
   before_action :signed_in_user, only: [:create, :destroy]
-  before_action :set_default, only:[:create]
+
 
   def new
     @story = Story.new
@@ -30,6 +30,8 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find(params[:id])
+    @micropost = Micropost.new
+    @microposts = Micropost.find_by story_id: @story.id
   end
 
   def vote
@@ -48,15 +50,6 @@ class StoriesController < ApplicationController
 
   def story_params
     params.require(:story).permit(:title, :url)
-  end
-
-
-  def find_commentable
-    return params[:controller].singularize.classify.constantize.find(params[:id])
-  end
-
-  def set_default
-    #self.points
   end
 
 end

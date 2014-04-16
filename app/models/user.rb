@@ -2,13 +2,10 @@ class User < ActiveRecord::Base
 
   has_many :stories
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
-
   has_many :reverse_relationships, foreign_key: "follower_id", class_name: "Relationship", dependent: :destroy
-  
-  
-
   has_many :followed_stories, through: :relationships, source: :followed
-  
+
+  has_many :microposts
 
   before_save{self.email = email.downcase}
   validates :name, presence: true, length: {maximum: 50}
@@ -22,7 +19,7 @@ class User < ActiveRecord::Base
 
 
   def following?(story)
-    relationships.find_by(followed_id: story) 
+    relationships.find_by(followed_id: story)
   end
 
   def follow!(story)

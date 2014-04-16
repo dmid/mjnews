@@ -11,18 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140405145305) do
+ActiveRecord::Schema.define(version: 20140412142508) do
 
-  create_table "comments", force: true do |t|
+  create_table "microposts", force: true do |t|
     t.string   "content"
-    t.integer  "commentable_id"
-    t.string   "ancestry"
-    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.integer  "story_id"
+    t.string   "comment_id"
+    t.boolean  "parent_is_comment", default: false
+    t.integer  "points",            default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ancestry"
   end
 
-  add_index "comments", ["ancestry"], name: "index_comments_on_ancestry"
+  add_index "microposts", ["ancestry"], name: "index_microposts_on_ancestry"
+  add_index "microposts", ["user_id", "story_id", "created_at"], name: "index_microposts_on_user_id_and_story_id_and_created_at"
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"

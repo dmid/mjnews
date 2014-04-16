@@ -315,3 +315,40 @@ if'n it is there. That way the div is always there and the stories display 100% 
   width:40px;
 
 }
+
+/* microposts */
+
+.microposts {
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+.content {
+  display: block;
+}
+.timestamp {
+  color: $grayLight;
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+
+.nested_microposts {
+  margin-left: 30px;
+}
+
+.nested_microposts .nested_microposts .nested_microposts .nested_microposts {
+  margin-left: 0;
+}

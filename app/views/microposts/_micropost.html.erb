@@ -1,0 +1,8 @@
+<li>
+  <%= micropost.content %>
+ 
+    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+ 
+  Posted by: <%= link_to micropost.user.name, micropost.user %>
+<%= link_to "reply", new_micropost_path(parent_id: micropost) %>
+</li>

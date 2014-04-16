@@ -1,22 +1,25 @@
 Mjnews::Application.routes.draw do
    root 'stories#index' #eventually will be stories#index
 
-  resources :comments do
-    resources :comments
-  end
+
   resources :stories do
     member do
       get  :followers
       post :vote
-      resources :comments
+      get :microposts
+
     end
   end
 
   resources :users do
     member do
       get :following
+      get :microposts
     end
   end
+
+
+
 
   get 'stories/index'
   get "static_pages/home"
@@ -26,6 +29,7 @@ Mjnews::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :stories, only: [:create, :destroy]
+  resources :microposts
 
 
   match '/stories', to: 'stories#index', via: 'get'
@@ -34,6 +38,7 @@ Mjnews::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: 'delete'
   match 'post', to: 'stories#new' ,via: 'get'
   match '/about', to: 'static_pages#about', via: 'get'
+
 
 
 

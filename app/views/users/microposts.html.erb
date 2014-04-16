@@ -1,0 +1,7 @@
+<% if @microposts != nil %>
+  <% @microposts.each do |mpost| %>
+                          <%= mpost.content %>
+                          <%= mpost.user.name %>
+                          <br />
+                                     <% end %>
+  <% end %>

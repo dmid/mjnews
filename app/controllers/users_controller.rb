@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome To The Sample App!"
+      flash[:success] = "Welcome To Marijuana News! The Place For Discussion, Opinions, & Advice"
       redirect_to @user
       else
         render 'new'
@@ -23,6 +23,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @stories = @user.stories.paginate(page: params[:page], per_page: 10)
+    @microposts = @user.microposts
+  end
+
+  def microposts
+    @user = User.find(params[:id])
+    @microposts = @user.microposts
   end
 
   def edit
@@ -62,14 +68,14 @@ end
   def signed_in_user
     unless signed_in?
       store_location #uh, send me back!
-      redirect_to signin_url, notice: "Please Sign In." 
+      redirect_to signin_url, notice: "Please Sign In."
     end
   end
 
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user) 
-  end  
+    redirect_to(root_url) unless current_user?(@user)
+  end
 
   def admin_user
     redirect_to(root_url) unless current_user.admin?
