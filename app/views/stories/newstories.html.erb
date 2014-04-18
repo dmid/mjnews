@@ -1,7 +1,8 @@
-<ol start="1" class="col-sm-10">
-  <% @thesort.each do |story| %>
-    <li class="stories">
-  
+<% @stories.each do |story| %>
+	
+
+	<li class="stories">
+  	
 
     <div class="vote">
            
@@ -9,7 +10,7 @@
            <%= link_to vote_story_path(story),id:"vote_button", method: :post do %>
            <span class="glyphicon glyphicon-chevron-up"></span>
            <% end %>
-       
+          
       
     </div>
       
@@ -28,5 +29,3 @@
   </li>
     <%end%>
 </ol>
-<%= will_paginate @thesort %>
-

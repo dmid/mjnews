@@ -38,6 +38,7 @@ Mjnews::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: 'delete'
   match 'post', to: 'stories#new' ,via: 'get'
   match '/about', to: 'static_pages#about', via: 'get'
+  match '/new', to: 'stories#newstories', via: 'get'
 
 
 

@@ -27,28 +27,13 @@ class StoriesController < ApplicationController
     @stories_hash.each {| storyid, rank |
       st = Story.find_by_id(storyid)
       st.rank = rank
+      st.save
 } 
   @thesort = Story.order(:rank)
   @thesort = @thesort.reverse
 
   @thesort = @thesort.paginate(page: params[:page], per_page: 20 )
   
-
-
-
-    
-
-    #@sorted_stories.each do
-
-
-    # while counter >= 0 do
-      
-    #   index = @sorted_stories[counter.to_i][0].to_i
-    #   story = Story.find_by_id(index)
-    #   @display_stories << story
-    #   counter = counter - 1
-    # end
-
      
   end
 
@@ -88,6 +73,11 @@ class StoriesController < ApplicationController
       current_user.relationships.create(followed_id: @story.id)
       redirect_to session.delete(:return_to)
     end
+
+  end
+
+  def newstories
+    @stories = Story.all.reverse
 
   end
 

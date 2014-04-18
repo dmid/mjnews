@@ -23,6 +23,7 @@ gem 'ancestry'
 gem 'domainatrix'
 gem 'time_difference'
 
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

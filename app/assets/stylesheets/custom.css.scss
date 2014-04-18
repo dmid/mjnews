@@ -83,8 +83,29 @@ li a{
     background-color: black;
 
   }
+
 }
 }
+
+#post-btn 
+{
+  
+  color: #8bca42;
+    background-color:black;
+ 
+    border-width: 1px;
+
+  &:hover{
+   color:white;
+  font-weight: bold;
+  background-color:#8bca42;
+  border-style: none;
+
+
+  }
+
+}
+
 
 
 #logo  {
@@ -366,6 +387,5 @@ aside {
   width:100px;
   height:20px;
 }
-
 
 
