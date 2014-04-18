@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 class StoriesController < ApplicationController
   before_action :signed_in_user, only: [:create, :destroy]
 
@@ -7,7 +9,47 @@ class StoriesController < ApplicationController
   end
 
   def index
-    @stories = Story.paginate(page: params[:page], per_page: 11)
+    @stories_hash = {}                  
+    @stories = Story.all
+
+    #Place stories in hash. Sort Hash, Place sorted hash into an array for easy display
+    @stories.each do |story|
+      #store this shit with ranking
+      time_since_post = TimeDifference.between(Time.now, story.created_at).in_hours
+      ranking = ((story.points.to_i - 1) / (time_since_post + 2)**1.5)
+       a = story.id
+      @stories_hash[a] = ranking
+    end 
+    @sorted_stories = @stories_hash.sort_by {|story, ranking| ranking}  #hash sort by ranking
+    @display_stories = []
+    counter = @sorted_stories.count
+
+    @stories_hash.each {| storyid, rank |
+      st = Story.find_by_id(storyid)
+      st.rank = rank
+} 
+  @thesort = Story.order(:rank)
+  @thesort = @thesort.reverse
+
+  @thesort = @thesort.paginate(page: params[:page], per_page: 20 )
+  
+
+
+
+    
+
+    #@sorted_stories.each do
+
+
+    # while counter >= 0 do
+      
+    #   index = @sorted_stories[counter.to_i][0].to_i
+    #   story = Story.find_by_id(index)
+    #   @display_stories << story
+    #   counter = counter - 1
+    # end
+
+     
   end
 
   def create
@@ -35,15 +77,19 @@ class StoriesController < ApplicationController
   end
 
   def vote
-    sign_in current_user
-    session[:return_to] ||= request.referer
-    @story = Story.find(params[:id])
-    @story.points = @story.points.to_i + 1
-    @story.save
-    current_user.relationships.create(followed_id: @story.id)
-    redirect_to session.delete(:return_to)
-  end
+    if current_user == nil
+      flash[:notice] = "Please Sign In To Vote"
+      redirect_to signin_path
+    else
+      session[:return_to] ||= request.referer
+      @story = Story.find(params[:id])
+      @story.points = @story.points.to_i + 1
+      @story.save
+      current_user.relationships.create(followed_id: @story.id)
+      redirect_to session.delete(:return_to)
+    end
 
+  end
 
 
   private
@@ -51,5 +97,6 @@ class StoriesController < ApplicationController
   def story_params
     params.require(:story).permit(:title, :url)
   end
+
 
 end

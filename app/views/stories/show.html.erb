@@ -1,20 +1,26 @@
 <% provide(:title, @story.title) %>
 
-  <aside>
-    <section>
-  <%= render 'stories/story' %>
 
-
-    </section>
-  </aside>
-
-<div class="col-sm-6">
-<%= render 'microposts/form' %>
-
-
-<h3>Comments <%= @story.microposts.count %></h3>
-
-        <%= nested_microposts @story.microposts.arrange(order: :created_at) %>
-
-
+    
+    <% clean_url = Domainatrix.parse(@story.url)%>
+    <span class="title"> <%= link_to @story.title, @story.url %> </span>(<%= "#{clean_url.domain}.#{clean_url.public_suffix}"%>) <br />    
+    
+    <span class="points">Points:<%= @story.points %> </span>
+    
+    
+    <span class="posted_by "> posted by <%= link_to @story.user.name, @story.user %></span> 
+    <span class="posted_at "><%= time_ago_in_words(@story.created_at)%> ago.</span> |
+    <span class="num_comments">comments <%= @story.microposts.count %>  
+      
+   
+    <br /><br />
+    <%= render 'microposts/form' %>
+    
+    
+    <h3>Comments <%= @story.microposts.count %></h3>
+    
+    <%= nested_microposts @story.microposts.arrange(order: :created_at) %>
+    
+    
   </div>
+  

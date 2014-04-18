@@ -1,9 +1,6 @@
-<span class="title"> <%= link_to @story.title, @story.url %> </span><br />
-<div class="col-sm-6">
-Points:<%= @story.points %>
-<%= @story.url %>
-Posted <%= time_ago_in_words(@story.created_at)%> ago.
- posted by: <%= @story.user.name %>
 
 
-</div>
+ 
+<span class="points">Points:<%= story.points %> </span>
+ <span class= "posted_at ">Posted <%= time_ago_in_words(story.created_at)%> ago.</span>
+<span class="posted_by "> posted by: <%= story.user.name %></span>

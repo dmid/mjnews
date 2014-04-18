@@ -13,7 +13,7 @@ before_action :signed_in_user, only: [:create, :destroy]
     @micropost = current_user.microposts.build(micropost_params)
 
     @micropost.story_id = @micropost.root.story_id
-    @micropost.user_id = current_user.id
+    
     if @micropost.save
         flash[:success] = "Will BreakSoon"
     end

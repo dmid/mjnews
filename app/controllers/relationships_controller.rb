@@ -1,5 +1,5 @@
 class RelationshipsController < ApplicationController
-  before_action :signed_in_user
+  before_action :signed_in_user, only: [:create]
 
   def create
     @story = Story.find(params[:relationship][:followed_id])

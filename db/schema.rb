@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140412142508) do
+ActiveRecord::Schema.define(version: 20140418001507) do
 
   create_table "microposts", force: true do |t|
     t.string   "content"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20140412142508) do
     t.integer  "draft_comments_count",     default: 0
     t.integer  "published_comments_count", default: 0
     t.integer  "deleted_comments_count",   default: 0
+    t.float    "rank"
   end
 
   add_index "stories", ["user_id", "created_at"], name: "index_stories_on_user_id_and_created_at"
